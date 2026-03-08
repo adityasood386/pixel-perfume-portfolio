@@ -83,6 +83,10 @@ const PackagesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <p className="text-center text-xs text-muted-foreground/60 mt-8 font-body tracking-wide">
+          * Terms and conditions apply. Prices may vary based on location and requirements.
+        </p>
       </motion.div>
     </section>
   );
