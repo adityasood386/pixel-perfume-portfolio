@@ -17,7 +17,7 @@ import photographerPortrait from "@/assets/photographer-portrait.jpg";
 
 export const siteConfig = {
   // ---- BRAND ----
-  brandName: "Sood's Digital Studio",
+  brandName: "Sood's Photography",
   tagline: "Capturing Love, One Frame at a Time",
   heroSubtext: "Premium wedding photography that tells your unique love story with cinematic elegance. Based in Jalandhar, Punjab.",
   heroImage: heroImage,
