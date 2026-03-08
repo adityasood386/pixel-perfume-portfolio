@@ -97,7 +97,7 @@ export const siteConfig = {
   testimonials: [
     {
       name: "Priya & Rahul",
-      text: "Arjun captured our wedding day so beautifully that every time we look at the photos, we relive those magical moments. His attention to detail is unmatched!",
+      text: "Chandan captured our wedding day so beautifully that every time we look at the photos, we relive those magical moments. His attention to detail is unmatched!",
       location: "Mumbai",
     },
     {
@@ -107,7 +107,7 @@ export const siteConfig = {
     },
     {
       name: "Ananya & Karthik",
-      text: "The cinematic wedding film brought tears to our eyes. Arjun's team went above and beyond to capture every emotion perfectly.",
+      text: "The cinematic wedding film brought tears to our eyes. Chandan's team went above and beyond to capture every emotion perfectly.",
       location: "Bangalore",
     },
   ],
@@ -116,7 +116,7 @@ export const siteConfig = {
   contact: {
     email: "chandansood36@gmail.com",
     phone: "+91 98146 73200",
-    instagram: "@soodsdigitalstudio",
+    instagram: "@sood_photography_36",
     location: "Ashok Nagar opposite Sehnai Palace, Jalandhar",
   },
 
