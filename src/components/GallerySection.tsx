@@ -96,7 +96,7 @@ const GallerySection = () => {
                 <SwiperSlide key={i} className="!w-[260px] sm:!w-[380px] md:!w-[480px]">
                   <motion.div
                     whileHover={{ y: -10 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.15 }}
                     className="relative group cursor-pointer"
                     onClick={() => openLightbox(i)}
                   >
@@ -104,18 +104,18 @@ const GallerySection = () => {
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                        className="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:scale-110 group-hover:brightness-110"
                       />
                     </div>
 
-                    <div className="absolute inset-0 rounded-sm bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
+                    <div className="absolute inset-0 rounded-sm bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-end p-6">
                       <div>
                         <p className="section-label text-[10px]">{img.category}</p>
                         <p className="font-display text-2xl text-foreground tracking-wider mt-1">{img.alt.toUpperCase()}</p>
                       </div>
                     </div>
 
-                    <div className="absolute inset-0 rounded-sm border-2 border-primary/0 group-hover:border-primary/40 transition-all duration-500 pointer-events-none group-hover:neon-border" />
+                    <div className="absolute inset-0 rounded-sm border-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-200 ease-out pointer-events-none group-hover:neon-border" />
                   </motion.div>
                 </SwiperSlide>
               ))}

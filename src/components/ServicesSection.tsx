@@ -26,8 +26,8 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: { icon: any; title: str
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true, margin: "-50px" }}
     transition={{ delay: index * 0.06, duration: 0.5, ease: "easeOut" }}
-    whileHover={{ y: -8, scale: 1.04, transition: { duration: 0.25 } }}
-    className="glass-card border border-border/20 hover:border-primary/40 rounded-sm p-6 flex flex-col items-center text-center gap-3 transition-all duration-300 group cursor-default"
+    whileHover={{ y: -8, scale: 1.04, transition: { duration: 0.15 } }}
+    className="glass-card border border-border/20 hover:border-primary/40 rounded-sm p-6 flex flex-col items-center text-center gap-3 transition-colors duration-150 group cursor-default"
   >
     <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
       <Icon size={22} className="text-primary" />
