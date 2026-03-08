@@ -35,7 +35,7 @@ const AboutSection = () => {
               <img
                 src={siteConfig.photographer.portrait}
                 alt={siteConfig.photographer.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-[60%_30%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
             </motion.div>
