@@ -13,8 +13,14 @@ const ContactSection = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", date: "", message: "" });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const { name, phone, date, message } = formData;
+    const text = `Hi, I'm ${name}.%0APhone: ${phone}%0AEvent Date: ${date}%0A%0A${message}`;
+    const phoneNumber = siteConfig.contact.phone.replace(/[\s+\-]/g, "");
+    window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank", "noopener,noreferrer");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
@@ -90,12 +96,16 @@ const ContactSection = () => {
                 type="text"
                 placeholder="Your Name"
                 required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
               />
               <input
                 type="email"
                 placeholder="Email"
                 required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
@@ -103,16 +113,22 @@ const ContactSection = () => {
               type="tel"
               placeholder="Your Phone Number"
               required
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <input
               type="text"
               placeholder="Wedding / Event Date"
+              value={formData.date}
+              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
               className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <textarea
               placeholder="Tell us about your event..."
               rows={5}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
             <motion.button
