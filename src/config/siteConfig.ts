@@ -119,7 +119,7 @@ export const siteConfig = {
 
   // ---- SEO ----
   seo: {
-    title: "Sood's Digital Studio – Premium Wedding Photography Jalandhar",
+    title: "Sood's Photography – Premium Wedding Photography Jalandhar",
     description: "Cinematic wedding photography capturing your love story with elegance. Based in Jalandhar, Punjab. Book your dream wedding photographer today.",
   },
 };
