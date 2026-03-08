@@ -6,7 +6,6 @@ import { useRef } from "react";
 const stats = [
   { icon: Camera, label: "Experience", value: siteConfig.photographer.experience },
   { icon: Heart, label: "Weddings", value: siteConfig.photographer.weddingsCovered },
-  { icon: MapPin, label: "Cities", value: siteConfig.photographer.citiesCovered },
 ];
 
 const AboutSection = () => {
