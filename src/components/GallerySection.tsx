@@ -108,7 +108,7 @@ const GallerySection = () => {
                       />
                     </div>
 
-                    <div className="absolute inset-0 rounded-sm bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
+                    <div className="absolute inset-0 rounded-sm bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-end p-6">
                       <div>
                         <p className="section-label text-[10px]">{img.category}</p>
                         <p className="font-display text-2xl text-foreground tracking-wider mt-1">{img.alt.toUpperCase()}</p>
