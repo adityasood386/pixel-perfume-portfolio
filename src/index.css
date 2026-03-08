@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,46 +6,45 @@
 
 @layer base {
   :root {
-    --background: 30 15% 6%;
-    --foreground: 38 30% 90%;
+    --background: 220 20% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 30 12% 10%;
-    --card-foreground: 38 30% 90%;
+    --card: 220 18% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 30 12% 10%;
-    --popover-foreground: 38 30% 90%;
+    --popover: 220 18% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 38 60% 55%;
-    --primary-foreground: 30 15% 6%;
+    --primary: 330 85% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 10% 16%;
-    --secondary-foreground: 38 30% 90%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 30 8% 14%;
-    --muted-foreground: 30 10% 55%;
+    --muted: 220 12% 14%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 12 45% 45%;
-    --accent-foreground: 38 30% 95%;
+    --accent: 195 90% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 10% 18%;
-    --input: 30 10% 18%;
-    --ring: 38 60% 55%;
+    --border: 220 15% 14%;
+    --input: 220 15% 14%;
+    --ring: 330 85% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --gold: 38 60% 55%;
-    --gold-light: 38 50% 70%;
-    --gold-dark: 38 70% 35%;
-    --warm-cream: 38 30% 90%;
-    --deep-charcoal: 30 15% 6%;
-    --warm-brown: 20 20% 20%;
-    --blush: 12 45% 45%;
+    --neon-pink: 330 85% 60%;
+    --neon-cyan: 195 90% 50%;
+    --neon-orange: 25 95% 55%;
+    --sunset-top: 200 60% 15%;
+    --sunset-mid: 330 50% 25%;
+    --sunset-bottom: 25 70% 40%;
 
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'Josefin Sans', sans-serif;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,58 +65,137 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+
+  ::selection {
+    background: hsl(var(--neon-pink) / 0.4);
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer components {
   .section-padding {
-    @apply px-4 py-16 md:px-8 md:py-24 lg:px-16 lg:py-32;
+    @apply px-4 py-20 md:px-8 md:py-28 lg:px-16 lg:py-36;
   }
 
-  .gold-gradient {
-    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+  .neon-glow {
+    text-shadow:
+      0 0 10px hsl(var(--neon-pink) / 0.6),
+      0 0 40px hsl(var(--neon-pink) / 0.3),
+      0 0 80px hsl(var(--neon-pink) / 0.15);
   }
 
-  .gold-text {
-    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .cyan-glow {
+    text-shadow:
+      0 0 10px hsl(var(--neon-cyan) / 0.6),
+      0 0 40px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 15px hsl(var(--neon-pink) / 0.3),
+      inset 0 0 15px hsl(var(--neon-pink) / 0.1);
+  }
+
+  .neon-btn {
+    background: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-orange)));
+    box-shadow:
+      0 0 20px hsl(var(--neon-pink) / 0.4),
+      0 0 60px hsl(var(--neon-pink) / 0.15);
+    transition: all 0.3s ease;
+  }
+  .neon-btn:hover {
+    box-shadow:
+      0 0 30px hsl(var(--neon-pink) / 0.6),
+      0 0 80px hsl(var(--neon-pink) / 0.25);
+    transform: translateY(-2px);
   }
 
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    @apply backdrop-blur-xl border border-border/30;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.8),
+      hsl(var(--card) / 0.4)
+    );
   }
 
-  .image-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent;
+  .sunset-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--sunset-top)) 0%,
+      hsl(var(--sunset-mid)) 50%,
+      hsl(var(--sunset-bottom)) 100%
+    );
+  }
+
+  .image-overlay-gta {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.7) 30%,
+      transparent 60%,
+      hsl(var(--background) / 0.3) 100%
+    );
+  }
+
+  .line-accent {
+    @apply h-px w-16;
+    background: linear-gradient(90deg, hsl(var(--neon-pink)), transparent);
+  }
+
+  .section-label {
+    @apply font-body text-xs md:text-sm tracking-[0.4em] uppercase;
+    color: hsl(var(--neon-cyan));
+  }
+
+  .price-glow {
+    background: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-orange)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px hsl(var(--neon-pink) / 0.4));
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
-  border-radius: 3px;
+  background: hsl(var(--neon-pink) / 0.4);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold) / 0.5);
+  background: hsl(var(--neon-pink) / 0.7);
 }
 
 /* Swiper overrides */
 .swiper-pagination-bullet {
-  background: hsl(var(--gold)) !important;
-  opacity: 0.4 !important;
+  background: hsl(var(--neon-pink)) !important;
+  opacity: 0.3 !important;
+  width: 8px !important;
+  height: 8px !important;
 }
 .swiper-pagination-bullet-active {
   opacity: 1 !important;
+  box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.6) !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: hsl(var(--neon-pink)) !important;
+  --swiper-navigation-size: 28px !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-weight: bold !important;
 }
