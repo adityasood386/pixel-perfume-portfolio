@@ -66,15 +66,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="block text-primary neon-glow"
           >
-            DIGITAL
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="block"
-          >
-            STUDIO
+            PHOTOGRAPHY
           </motion.span>
         </motion.h1>
 
