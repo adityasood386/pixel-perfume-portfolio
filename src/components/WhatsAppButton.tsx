@@ -6,11 +6,13 @@ const WhatsAppButton = () => {
   const phoneNumber = siteConfig.contact.phone.replace(/[\s+\-]/g, "");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent("Hi! I'd like to book a photography session.")}`;
 
+  const handleClick = () => {
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <motion.a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.button
+      onClick={handleClick}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 2, type: "spring", stiffness: 200 }}
@@ -20,7 +22,7 @@ const WhatsAppButton = () => {
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle size={28} className="text-white" />
-    </motion.a>
+    </motion.button>
   );
 };
 

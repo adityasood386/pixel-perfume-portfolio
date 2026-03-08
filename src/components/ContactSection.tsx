@@ -13,8 +13,14 @@ const ContactSection = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", date: "", message: "" });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const { name, phone, date, message } = formData;
+    const text = `Hi, I'm ${name}.%0APhone: ${phone}%0AEvent Date: ${date}%0A%0A${message}`;
+    const phoneNumber = siteConfig.contact.phone.replace(/[\s+\-]/g, "");
+    window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank", "noopener,noreferrer");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
