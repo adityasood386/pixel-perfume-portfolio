@@ -26,7 +26,7 @@ export const siteConfig = {
   photographer: {
     name: "Chandan Sood",
     portrait: photographerPortrait,
-    bio: "With over 26 years of experience capturing love stories across India, I bring a cinematic eye and a passionate heart to every wedding. My approach blends candid moments with editorial elegance, ensuring every emotion is preserved beautifully.",
+    bio: "With over 26 years of experience capturing love stories, I bring a cinematic eye and a passionate heart to every wedding. My approach blends candid moments with editorial elegance, ensuring every emotion is preserved beautifully.",
     experience: "26+ Years",
     weddingsCovered: "500+",
   },
