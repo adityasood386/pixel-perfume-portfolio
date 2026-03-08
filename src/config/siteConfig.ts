@@ -84,7 +84,7 @@ export const siteConfig = {
         "500+ Edited Photos",
         "Cinematic Wedding Film",
         "Wedding Day Cinematic",
-        "Luxury Photo Album + 3 Albums",
+        "3 Albums",
         "Pre-Wedding Shoot",
         "Drone Coverage",
         "3 Posters",
