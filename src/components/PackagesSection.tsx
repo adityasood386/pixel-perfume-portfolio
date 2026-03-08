@@ -1,15 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
+import { useRef } from "react";
 
 const PackagesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.85, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+
   return (
-    <section id="packages" className="section-padding relative overflow-hidden">
-      {/* Background effects */}
+    <section id="packages" ref={sectionRef} className="section-padding relative overflow-hidden">
       <div className="absolute right-0 top-1/4 w-96 h-96 rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
       <div className="absolute left-0 bottom-1/4 w-64 h-64 rounded-full bg-neon-cyan/5 blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative">
+      <motion.div style={{ scale, opacity }} className="max-w-7xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -28,10 +36,10 @@ const PackagesSection = () => {
           {siteConfig.packages.map((pkg, i) => (
             <motion.div
               key={pkg.name}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 80, rotateX: 15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.7, delay: i * 0.15, ease: "easeOut" }}
               whileHover={{ y: -12, scale: 1.02 }}
               className={`relative rounded-sm p-8 lg:p-10 flex flex-col glass-card transition-all duration-500 ${
                 pkg.popular
@@ -75,7 +83,7 @@ const PackagesSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

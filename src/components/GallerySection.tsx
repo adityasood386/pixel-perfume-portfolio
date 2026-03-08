@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Autoplay, Navigation } from "swiper/modules";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -8,32 +8,56 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { siteConfig } from "@/config/siteConfig";
+import { useRef } from "react";
 
 const GallerySection = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const headerX = useTransform(scrollYProgress, [0, 0.3], [-120, 0]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
-  const prev = () =>
+
+  const prev = useCallback(() =>
     setLightboxIndex((i) =>
       i !== null ? (i - 1 + siteConfig.galleryImages.length) % siteConfig.galleryImages.length : null
-    );
-  const next = () =>
+    ), []);
+  const next = useCallback(() =>
     setLightboxIndex((i) =>
       i !== null ? (i + 1) % siteConfig.galleryImages.length : null
-    );
+    ), []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex, prev, next]);
+
+  // Swipe direction tracking
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) =>
+    Math.abs(offset) * velocity;
 
   return (
     <>
-      <section id="portfolio" className="section-padding overflow-hidden relative">
+      <section id="portfolio" ref={sectionRef} className="section-padding overflow-hidden relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative">
+          {/* Scroll-driven header slide-in */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            style={{ x: headerX, opacity: headerOpacity }}
             className="mb-16"
           >
             <p className="section-label mb-4">Portfolio</p>
@@ -100,7 +124,7 @@ const GallerySection = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
+      {/* Lightbox with swipe gestures */}
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
@@ -111,7 +135,6 @@ const GallerySection = () => {
             className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-2xl flex items-center justify-center"
             onClick={closeLightbox}
           >
-            {/* Close */}
             <button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-foreground/60 hover:text-primary transition-colors z-10"
@@ -119,39 +142,59 @@ const GallerySection = () => {
               <X size={32} />
             </button>
 
-            {/* Prev */}
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-4 md:left-8 text-foreground/60 hover:text-primary transition-colors z-10"
+              className="absolute left-4 md:left-8 text-foreground/60 hover:text-primary transition-colors z-10 hidden md:block"
             >
               <ChevronLeft size={40} />
             </button>
 
-            {/* Image */}
-            <motion.img
-              key={lightboxIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              src={siteConfig.galleryImages[lightboxIndex].src}
-              alt={siteConfig.galleryImages[lightboxIndex].alt}
-              className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {/* Swipeable image */}
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.img
+                key={lightboxIndex}
+                initial={{ opacity: 0, x: 300, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -300, scale: 0.8 }}
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 },
+                  scale: { duration: 0.3 },
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(_e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x);
+                  if (swipe < -swipeConfidenceThreshold) {
+                    next();
+                  } else if (swipe > swipeConfidenceThreshold) {
+                    prev();
+                  }
+                }}
+                src={siteConfig.galleryImages[lightboxIndex].src}
+                alt={siteConfig.galleryImages[lightboxIndex].alt}
+                className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm cursor-grab active:cursor-grabbing"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </AnimatePresence>
 
-            {/* Next */}
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-4 md:right-8 text-foreground/60 hover:text-primary transition-colors z-10"
+              className="absolute right-4 md:right-8 text-foreground/60 hover:text-primary transition-colors z-10 hidden md:block"
             >
               <ChevronRight size={40} />
             </button>
 
-            {/* Counter */}
-            <p className="absolute bottom-6 font-body text-sm text-muted-foreground tracking-widest">
-              {lightboxIndex + 1} / {siteConfig.galleryImages.length}
-            </p>
+            {/* Counter + swipe hint on mobile */}
+            <div className="absolute bottom-6 flex flex-col items-center gap-2">
+              <p className="font-body text-sm text-muted-foreground tracking-widest">
+                {lightboxIndex + 1} / {siteConfig.galleryImages.length}
+              </p>
+              <p className="font-body text-[10px] text-muted-foreground/50 tracking-wider md:hidden">
+                ← SWIPE TO NAVIGATE →
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
