@@ -116,7 +116,7 @@ export const siteConfig = {
   contact: {
     email: "chandansood36@gmail.com",
     phone: "+91 98146 73200",
-    instagram: "@soodsdigitalstudio",
+    instagram: "@sood_photography_36",
     location: "Ashok Nagar opposite Sehnai Palace, Jalandhar",
   },
 
