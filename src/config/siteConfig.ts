@@ -80,7 +80,7 @@ export const siteConfig = {
       features: [
         "Multi-Day Coverage",
         "4 Camera + 1 Cinematic Camera",
-        "3 Photographers + Videographer",
+        
         "500+ Edited Photos",
         "Cinematic Wedding Film",
         "Wedding Day Cinematic",
