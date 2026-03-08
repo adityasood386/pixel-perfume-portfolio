@@ -96,7 +96,7 @@ const GallerySection = () => {
                 <SwiperSlide key={i} className="!w-[260px] sm:!w-[380px] md:!w-[480px]">
                   <motion.div
                     whileHover={{ y: -10 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.15 }}
                     className="relative group cursor-pointer"
                     onClick={() => openLightbox(i)}
                   >
