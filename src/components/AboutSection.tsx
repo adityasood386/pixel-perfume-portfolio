@@ -66,7 +66,7 @@ const AboutSection = () => {
               {siteConfig.photographer.bio}
             </p>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
