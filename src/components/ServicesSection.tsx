@@ -7,6 +7,7 @@ const studioServices = [
   { icon: Image, title: "Photo Lamination", desc: "Glossy & matte lamination for lasting prints" },
   { icon: Sparkles, title: "Photo Restoration", desc: "Restore & retouch old or damaged photographs" },
   { icon: Printer, title: "Canvas & Frames", desc: "Premium canvas prints & designer photo frames" },
+  { icon: Film, title: "VCR/DVD to Pen Drive", desc: "Convert old VCR tapes & DVDs to digital pen drives" },
 ];
 
 const coverageServices = [
@@ -15,8 +16,7 @@ const coverageServices = [
   { icon: PartyPopper, title: "Birthday Shoot", desc: "Fun & vibrant birthday party photography" },
   { icon: Heart, title: "Anniversary", desc: "Celebrate milestones with beautiful portraits" },
   { icon: GraduationCap, title: "Retirement", desc: "Capture farewell & retirement ceremonies" },
-  { icon: Video, title: "Live Streaming", desc: "Professional multi-camera live event streaming" },
-  { icon: Radio, title: "Corporate Events", desc: "Conferences, product launches & team events" },
+  { icon: Video, title: "Live Streaming", desc: "Professional camera live event streaming" },
 ];
 
 const ServiceCard = ({ icon: Icon, title, desc, index }: { icon: any; title: string; desc: string; index: number }) => (

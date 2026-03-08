@@ -6,7 +6,6 @@ import { useRef } from "react";
 const stats = [
   { icon: Camera, label: "Experience", value: siteConfig.photographer.experience },
   { icon: Heart, label: "Weddings", value: siteConfig.photographer.weddingsCovered },
-  { icon: MapPin, label: "Cities", value: siteConfig.photographer.citiesCovered },
 ];
 
 const AboutSection = () => {
@@ -67,7 +66,7 @@ const AboutSection = () => {
               {siteConfig.photographer.bio}
             </p>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}

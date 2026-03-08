@@ -52,7 +52,6 @@ const TestimonialsSection = () => {
                   <div className="mt-8 flex flex-col items-center">
                     <div className="line-accent mb-4 mx-auto" />
                     <p className="font-display text-xl tracking-[0.15em] text-primary">{t.name.toUpperCase()}</p>
-                    <p className="font-body text-xs text-muted-foreground mt-1 tracking-wider">{t.location}</p>
                   </div>
                 </div>
               </SwiperSlide>
