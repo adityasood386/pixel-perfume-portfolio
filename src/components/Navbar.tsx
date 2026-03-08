@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { siteConfig } from "@/config/siteConfig";
 
 const navLinks = [
@@ -47,18 +48,21 @@ const Navbar = () => {
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group whitespace-nowrap"
+              className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-foreground/60 hover:text-primary transition-colors duration-150 relative group whitespace-nowrap"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-150" />
             </button>
           ))}
+          <ThemeToggle />
         </div>
 
-        {/* Mobile toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-primary">
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button onClick={() => setIsOpen(!isOpen)} className="text-primary">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile fullscreen menu */}
