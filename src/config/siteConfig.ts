@@ -107,7 +107,7 @@ export const siteConfig = {
     },
     {
       name: "Ananya & Karthik",
-      text: "The cinematic wedding film brought tears to our eyes. Arjun's team went above and beyond to capture every emotion perfectly.",
+      text: "The cinematic wedding film brought tears to our eyes. Chandan's team went above and beyond to capture every emotion perfectly.",
       location: "Bangalore",
     },
   ],
