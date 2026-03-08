@@ -26,7 +26,13 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Floating ambient orbs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-primary/[0.03] blur-[100px] animate-[float_8s_ease-in-out_infinite]" />
+        <div className="absolute bottom-1/3 -right-32 w-80 h-80 rounded-full bg-neon-cyan/[0.03] blur-[120px] animate-[float_10s_ease-in-out_infinite_2s]" />
+        <div className="absolute top-2/3 left-1/3 w-48 h-48 rounded-full bg-neon-orange/[0.02] blur-[80px] animate-[float_12s_ease-in-out_infinite_4s]" />
+      </div>
       <Navbar />
       <HeroSection />
       <GallerySection />
