@@ -7,6 +7,7 @@ const studioServices = [
   { icon: Image, title: "Photo Lamination", desc: "Glossy & matte lamination for lasting prints" },
   { icon: Sparkles, title: "Photo Restoration", desc: "Restore & retouch old or damaged photographs" },
   { icon: Printer, title: "Canvas & Frames", desc: "Premium canvas prints & designer photo frames" },
+  { icon: Film, title: "VCR/DVD to Pen Drive", desc: "Convert old VCR tapes & DVDs to digital pen drives" },
 ];
 
 const coverageServices = [
