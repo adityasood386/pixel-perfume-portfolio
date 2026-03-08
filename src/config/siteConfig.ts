@@ -17,7 +17,7 @@ import photographerPortrait from "@/assets/photographer-portrait.jpg";
 
 export const siteConfig = {
   // ---- BRAND ----
-  brandName: "Sood's Digital Studio",
+  brandName: "Sood's Photography",
   tagline: "Capturing Love, One Frame at a Time",
   heroSubtext: "Premium wedding photography that tells your unique love story with cinematic elegance. Based in Jalandhar, Punjab.",
   heroImage: heroImage,
@@ -119,7 +119,7 @@ export const siteConfig = {
 
   // ---- SEO ----
   seo: {
-    title: "Sood's Digital Studio – Premium Wedding Photography Jalandhar",
+    title: "Sood's Photography – Premium Wedding Photography Jalandhar",
     description: "Cinematic wedding photography capturing your love story with elegance. Based in Jalandhar, Punjab. Book your dream wedding photographer today.",
   },
 };
