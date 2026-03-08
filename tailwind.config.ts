@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Cormorant Garamond", "serif"],
-        body: ["Josefin Sans", "sans-serif"],
+        display: ["Bebas Neue", "sans-serif"],
+        body: ["Rajdhani", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,14 +51,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          dark: "hsl(var(--gold-dark))",
-        },
-        "warm-cream": "hsl(var(--warm-cream))",
-        "warm-brown": "hsl(var(--warm-brown))",
-        blush: "hsl(var(--blush))",
+        "neon-pink": "hsl(var(--neon-pink))",
+        "neon-cyan": "hsl(var(--neon-cyan))",
+        "neon-orange": "hsl(var(--neon-orange))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -88,16 +83,21 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+        "pulse-neon": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.6" },
+        },
+        "slide-up": {
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
+        "pulse-neon": "pulse-neon 2s ease-in-out infinite",
+        "slide-up": "slide-up 0.8s ease-out",
       },
     },
   },

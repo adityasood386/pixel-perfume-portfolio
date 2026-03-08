@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Send } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { useState } from "react";
 
@@ -20,86 +20,102 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Ambient */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-3">Get in Touch</p>
-          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Let's Create Magic
+          <p className="section-label mb-4">Contact</p>
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-[0.05em] text-foreground">
+            LET'S <span className="text-primary neon-glow">CONNECT</span>
           </h2>
+          <div className="line-accent mt-4 mx-auto" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <p className="font-body text-sm text-muted-foreground leading-relaxed">
-              Ready to book your dream wedding photographer? Reach out and let's discuss how we can capture your special day.
+            <p className="font-body text-sm text-muted-foreground leading-relaxed font-light">
+              Ready to capture your special day? Get in touch and let's create something unforgettable together.
             </p>
 
-            <div className="space-y-6">
-              {contactItems.map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full glass-card flex items-center justify-center">
+            <div className="space-y-5">
+              {contactItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-10 h-10 rounded-sm glass-card border border-border/20 flex items-center justify-center group-hover:border-primary/40 transition-colors duration-300">
                     <item.icon size={16} className="text-primary" />
                   </div>
-                  <span className="font-body text-sm text-foreground">{item.label}</span>
-                </div>
+                  <span className="font-body text-sm text-foreground/70 group-hover:text-foreground transition-colors">{item.label}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* Form */}
           <motion.form
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             onSubmit={handleSubmit}
-            className="space-y-5"
+            className="space-y-4"
           >
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-4">
               <input
                 type="text"
                 placeholder="Your Name"
                 required
-                className="w-full bg-secondary/50 border border-border/50 rounded-sm px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
               />
               <input
                 type="email"
                 placeholder="Email"
                 required
-                className="w-full bg-secondary/50 border border-border/50 rounded-sm px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
             <input
               type="text"
               placeholder="Wedding Date"
-              className="w-full bg-secondary/50 border border-border/50 rounded-sm px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <textarea
               placeholder="Tell us about your wedding..."
               rows={5}
-              className="w-full bg-secondary/50 border border-border/50 rounded-sm px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
+              className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-4 gold-gradient text-primary-foreground font-body text-sm tracking-widest uppercase rounded-sm"
+              className="w-full py-4 neon-btn text-primary-foreground font-body text-sm font-bold tracking-[0.25em] uppercase rounded-sm flex items-center justify-center gap-2"
             >
-              {submitted ? "Message Sent! ✨" : "Send Message"}
+              {submitted ? "Message Sent! ✨" : (
+                <>
+                  Send Message
+                  <Send size={14} />
+                </>
+              )}
             </motion.button>
           </motion.form>
         </div>

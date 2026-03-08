@@ -17,9 +17,9 @@ import photographerPortrait from "@/assets/photographer-portrait.jpg";
 
 export const siteConfig = {
   // ---- BRAND ----
-  brandName: "Aura Studios",
+  brandName: "Sood's Digital Studio",
   tagline: "Capturing Love, One Frame at a Time",
-  heroSubtext: "Premium wedding photography that tells your unique love story with cinematic elegance.",
+  heroSubtext: "Premium wedding photography that tells your unique love story with cinematic elegance. Based in Jalandhar, Punjab.",
   heroImage: heroImage,
 
   // ---- PHOTOGRAPHER ----
@@ -112,15 +112,15 @@ export const siteConfig = {
 
   // ---- CONTACT INFO ----
   contact: {
-    email: "hello@aurastudios.in",
+    email: "hello@soodsdigitalstudio.in",
     phone: "+91 98765 43210",
-    instagram: "@aurastudios",
-    location: "Mumbai, India",
+    instagram: "@soodsdigitalstudio",
+    location: "Ashok Nagar opposite Sehnai Palace, Jalandhar",
   },
 
   // ---- SEO ----
   seo: {
-    title: "Aura Studios – Premium Wedding Photography India",
-    description: "Cinematic wedding photography capturing your love story with elegance. Based in Mumbai, available across India. Book your dream wedding photographer today.",
+    title: "Sood's Digital Studio – Premium Wedding Photography Jalandhar",
+    description: "Cinematic wedding photography capturing your love story with elegance. Based in Jalandhar, Punjab. Book your dream wedding photographer today.",
   },
 };
