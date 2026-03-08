@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/siteConfig";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Packages", href: "#packages" },
   { label: "Contact", href: "#contact" },
@@ -36,17 +37,17 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
-        <button onClick={() => scrollTo("#home")} className="font-display text-2xl md:text-3xl tracking-[0.15em] text-primary neon-glow">
+        <button onClick={() => scrollTo("#home")} className="font-display text-lg md:text-xl tracking-[0.1em] text-primary neon-glow shrink-0">
           {siteConfig.brandName.toUpperCase()}
         </button>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="font-body text-xs font-semibold tracking-[0.25em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group"
+              className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group whitespace-nowrap"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300" />
@@ -55,7 +56,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-primary">
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-primary">
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -68,7 +69,7 @@ const Navbar = () => {
             animate={{ opacity: 1, clipPath: "circle(150% at calc(100% - 40px) 28px)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at calc(100% - 40px) 28px)" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="md:hidden fixed inset-0 bg-background/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 z-40"
+            className="lg:hidden fixed inset-0 bg-background/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 z-40"
           >
             {navLinks.map((link, i) => (
               <motion.button
