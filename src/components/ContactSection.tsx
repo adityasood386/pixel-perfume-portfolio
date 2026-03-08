@@ -13,15 +13,14 @@ const ContactSection = () => {
   };
 
   const contactItems = [
-    { icon: Mail, label: siteConfig.contact.email },
-    { icon: Phone, label: siteConfig.contact.phone },
-    { icon: MapPin, label: siteConfig.contact.location },
-    { icon: Instagram, label: siteConfig.contact.instagram },
+    { icon: Mail, label: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
+    { icon: Phone, label: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone.replace(/\s/g, "")}` },
+    { icon: MapPin, label: siteConfig.contact.location, href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.location)}` },
+    { icon: Instagram, label: siteConfig.contact.instagram, href: `https://www.instagram.com/${siteConfig.contact.instagram.replace("@", "")}` },
   ];
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
-      {/* Ambient */}
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
@@ -54,19 +53,22 @@ const ContactSection = () => {
 
             <div className="space-y-5">
               {contactItems.map((item, i) => (
-                <motion.div
+                <motion.a
                   key={item.label}
+                  href={item.href}
+                  target={item.icon === MapPin || item.icon === Instagram ? "_blank" : undefined}
+                  rel={item.icon === MapPin || item.icon === Instagram ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-4 group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-sm glass-card border border-border/20 flex items-center justify-center group-hover:border-primary/40 transition-colors duration-300">
                     <item.icon size={16} className="text-primary" />
                   </div>
-                  <span className="font-body text-sm text-foreground/70 group-hover:text-foreground transition-colors">{item.label}</span>
-                </motion.div>
+                  <span className="font-body text-sm text-foreground/70 group-hover:text-primary transition-colors">{item.label}</span>
+                </motion.a>
               ))}
             </div>
           </motion.div>
@@ -95,12 +97,18 @@ const ContactSection = () => {
               />
             </div>
             <input
+              type="tel"
+              placeholder="Your Phone Number"
+              required
+              className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+            />
+            <input
               type="text"
-              placeholder="Wedding Date"
+              placeholder="Wedding / Event Date"
               className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <textarea
-              placeholder="Tell us about your wedding..."
+              placeholder="Tell us about your event..."
               rows={5}
               className="w-full bg-secondary/50 border border-border/30 rounded-sm px-4 py-3.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
