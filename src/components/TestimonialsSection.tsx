@@ -1,17 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { siteConfig } from "@/config/siteConfig";
+import { useRef } from "react";
 
 const TestimonialsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const rotate = useTransform(scrollYProgress, [0, 0.3], [3, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
+
   return (
-    <section className="section-padding relative overflow-hidden">
-      {/* Ambient glow */}
+    <section ref={sectionRef} className="section-padding relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative">
+      <motion.div style={{ rotateX: rotate, scale }} className="max-w-5xl mx-auto relative [perspective:1000px]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +50,6 @@ const TestimonialsSection = () => {
             {siteConfig.testimonials.map((t, i) => (
               <SwiperSlide key={i}>
                 <div className="text-center px-4 md:px-16">
-                  {/* Large quote mark */}
                   <span className="font-display text-8xl md:text-9xl text-primary/20 leading-none select-none">"</span>
 
                   <p className="font-body text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed font-light -mt-10 md:-mt-14">
@@ -58,7 +65,7 @@ const TestimonialsSection = () => {
             ))}
           </Swiper>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,32 +1,49 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+  const imgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 150]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden">
-      {/* Background with parallax-like zoom */}
+    <section id="home" ref={sectionRef} className="relative h-screen w-full overflow-hidden">
+      {/* Background with scroll-driven parallax zoom */}
       <motion.div
-        initial={{ scale: 1.3, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.5, ease: "easeOut" }}
+        style={{ scale: imgScale, opacity: imgOpacity }}
         className="absolute inset-0"
       >
-        <img
+        <motion.img
+          initial={{ scale: 1.3, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
           src={siteConfig.heroImage}
           alt="Wedding Photography"
           className="w-full h-full object-cover"
         />
       </motion.div>
 
-      {/* Multi-layer overlays for depth */}
+      {/* Multi-layer overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background))_100%)]" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 pt-20 md:pt-24">
-        {/* Small label */}
+      {/* Animated grain overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-noise" />
+
+      {/* Content with scroll parallax */}
+      <motion.div
+        style={{ y: textY, opacity: textOpacity }}
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 pt-20 md:pt-24"
+      >
         <motion.div
           initial={{ opacity: 0, width: 0 }}
           animate={{ opacity: 1, width: "auto" }}
@@ -36,7 +53,6 @@ const HeroSection = () => {
           <p className="section-label">Wedding Photography • Jalandhar</p>
         </motion.div>
 
-        {/* Main title - GTA style massive condensed text */}
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,7 +78,6 @@ const HeroSection = () => {
           </motion.span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,7 +87,6 @@ const HeroSection = () => {
           {siteConfig.heroSubtext}
         </motion.p>
 
-        {/* CTA */}
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +99,6 @@ const HeroSection = () => {
           Explore Work
         </motion.button>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -94,9 +107,9 @@ const HeroSection = () => {
         >
           <ChevronDown className="text-primary animate-pulse-neon" size={28} />
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Corner accents like GTA */}
+      {/* Corner accents */}
       <div className="absolute top-20 left-4 md:left-8 w-8 h-8 border-l-2 border-t-2 border-primary/30" />
       <div className="absolute top-20 right-4 md:right-8 w-8 h-8 border-r-2 border-t-2 border-primary/30" />
       <div className="absolute bottom-8 left-4 md:left-8 w-8 h-8 border-l-2 border-b-2 border-primary/30" />

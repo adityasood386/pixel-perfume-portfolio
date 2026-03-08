@@ -1,10 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Mail, Phone, MapPin, Instagram, Send } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const headerY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,15 +27,12 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="section-padding relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          style={{ y: headerY, opacity: headerOpacity }}
           className="text-center mb-16"
         >
           <p className="section-label mb-4">Contact</p>
@@ -39,12 +43,11 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
-          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8"
           >
             <p className="font-body text-sm text-muted-foreground leading-relaxed font-light">
@@ -58,10 +61,11 @@ const ContactSection = () => {
                   href={item.href}
                   target={item.icon === MapPin || item.icon === Instagram ? "_blank" : undefined}
                   rel={item.icon === MapPin || item.icon === Instagram ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
+                  whileHover={{ x: 8, transition: { duration: 0.2 } }}
                   className="flex items-center gap-4 group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-sm glass-card border border-border/20 flex items-center justify-center group-hover:border-primary/40 transition-colors duration-300">
@@ -73,12 +77,11 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* Form */}
           <motion.form
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             onSubmit={handleSubmit}
             className="space-y-4"
           >
