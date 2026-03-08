@@ -40,8 +40,8 @@ const PackagesSection = () => {
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: "easeOut" }}
-              whileHover={{ y: -12, scale: 1.02 }}
-              className={`relative rounded-sm p-8 lg:p-10 flex flex-col glass-card transition-all duration-500 ${
+              whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.15 } }}
+              className={`relative rounded-sm p-8 lg:p-10 flex flex-col glass-card transition-colors duration-150 ${
                 pkg.popular
                   ? "border-primary/30 neon-border"
                   : "border-border/20 hover:border-primary/20"
