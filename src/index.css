@@ -66,6 +66,10 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, hsl(var(--neon-pink) / 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(var(--neon-cyan) / 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, hsl(var(--neon-orange) / 0.03) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
