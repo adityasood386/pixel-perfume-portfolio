@@ -115,7 +115,7 @@ const GallerySection = () => {
                       </div>
                     </div>
 
-                    <div className="absolute inset-0 rounded-sm border-2 border-primary/0 group-hover:border-primary/40 transition-all duration-500 pointer-events-none group-hover:neon-border" />
+                    <div className="absolute inset-0 rounded-sm border-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-200 ease-out pointer-events-none group-hover:neon-border" />
                   </motion.div>
                 </SwiperSlide>
               ))}
