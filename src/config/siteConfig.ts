@@ -97,7 +97,7 @@ export const siteConfig = {
   testimonials: [
     {
       name: "Priya & Rahul",
-      text: "Arjun captured our wedding day so beautifully that every time we look at the photos, we relive those magical moments. His attention to detail is unmatched!",
+      text: "Chandan captured our wedding day so beautifully that every time we look at the photos, we relive those magical moments. His attention to detail is unmatched!",
       location: "Mumbai",
     },
     {
