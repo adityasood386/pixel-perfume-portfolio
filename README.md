@@ -1,59 +1,48 @@
-# 📸 Sood's Photography
+<div align="center">
 
-Website for **Sood's Photography**, a premium wedding photography studio based in Jalandhar, Punjab. It showcases the studio's work in a clean, responsive gallery and makes it easy for couples to get in touch.
+# Sood's Photography
 
-🔗 **Live site:** [sood-s-photography.vercel.app](https://sood-s-photography.vercel.app/)
+**A modern portfolio website for a premium wedding photography studio in Jalandhar, Punjab.**
 
-![Homepage screenshot](./screenshots/home.png)
+[![Live Site](https://img.shields.io/badge/Live_Site-Visit-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://sood-s-photography.vercel.app/)
 
-## ✨ Features
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-- Wedding photography portfolio with an image **lightbox** for full-size viewing
-- **Light and dark theme** toggle
-- Fully responsive layout for mobile, tablet and desktop
-- Reusable UI components built with shadcn/ui
-- <Add: services/packages section, contact or booking options, testimonials, etc.>
+<img src="./docs/preview.png" alt="Sood's Photography homepage" width="800" />
 
-## 🛠️ Tech Stack
+</div>
 
-| Area | Technology |
+---
+
+## Overview
+
+Sood's Photography is a fast, responsive website built to present wedding photography work and help couples get in touch. The focus is on large, high-quality imagery with a clean layout that stays out of the way of the photos.
+
+## Features
+
+- **Immersive gallery** with a full-screen lightbox for viewing photos
+- **Light and dark mode** with a built-in theme toggle
+- **Fully responsive** design for phones, tablets and desktops
+- **Accessible component library** built on shadcn/ui
+- **Fast load times** with Vite and optimized static assets
+
+## Tech Stack
+
+| Category | Tools |
 | --- | --- |
-| Framework | React 18 + TypeScript |
+| Framework | React, TypeScript |
 | Build tool | Vite |
-| Styling | Tailwind CSS + shadcn/ui |
+| Styling | Tailwind CSS, shadcn/ui |
 | Testing | Vitest |
-| Linting | ESLint |
-| Hosting | Vercel |
+| Deployment | Vercel |
 
-## 📁 Project Structure
+## Getting Started
 
-```
-pixel-perfume-portfolio/
-├── public/              # Static assets
-├── src/
-│   ├── assets/          # Images and media
-│   ├── components/      # Reusable UI components
-│   ├── config/          # Site configuration
-│   ├── hooks/           # Custom React hooks
-│   ├── lib/             # Utility functions
-│   ├── pages/           # Page components
-│   ├── test/            # Tests
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
-├── index.html
-├── tailwind.config.ts
-├── vite.config.ts
-└── package.json
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ (or [Bun](https://bun.sh/))
-
-### Installation
+**Prerequisites:** Node.js 18 or higher
 
 ```bash
 # Clone the repository
@@ -67,27 +56,45 @@ npm install
 npm run dev
 ```
 
-Open the local URL shown in your terminal (usually `http://localhost:5173`).
+The app runs at `http://localhost:5173`.
 
-### Available Scripts
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run tests with Vitest |
 
-```bash
-npm run dev       # Start the dev server
-npm run build     # Create a production build
-npm run preview   # Preview the production build
-npm run lint      # Run ESLint
-npm run test      # Run tests with Vitest
+<details>
+<summary><strong>Project Structure</strong></summary>
+
+```
+src/
+├── assets/        # Images and media
+├── components/    # Reusable UI components
+├── config/        # Site configuration
+├── hooks/         # Custom React hooks
+├── lib/           # Utilities
+├── pages/         # Page components
+├── test/          # Tests
+├── App.tsx
+└── main.tsx
 ```
 
-## 🌐 Deployment
+</details>
 
-The site is deployed on [Vercel](https://vercel.com/). Pushing to the `main` branch triggers a new deployment.
+## Deployment
 
-## 📬 Contact
+The site is deployed on Vercel. Every push to `main` triggers an automatic deployment.
 
-**Sood's Photography**, Jalandhar, Punjab
-Developed by **Aditya Sood** · [GitHub](https://github.com/adityasood386) · [LinkedIn](https://linkedin.com/in/aditya-sood-b12b41267)
+## Author
 
-## 📄 License
+**Aditya Sood**
 
-<MIT or All rights reserved>. Photographs © Sood's Photography.
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/adityasood386)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/aditya-sood-b12b41267)
+
+## License
+
+All photographs are © Sood's Photography. All rights reserved.
