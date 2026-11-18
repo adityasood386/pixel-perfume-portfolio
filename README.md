@@ -7,7 +7,7 @@
 
 A modern, responsive photography portfolio and studio website built for **Sood Photography** to showcase visual work, highlight service packages, and make client inquiries effortless across desktop and mobile devices.
 
-> **Live Demo:** *[(Add your deployed URL here, e.g., Vercel / Netlify / GitHub Pages)](https://sood-s-photography.vercel.app/)*
+> **Live Demo:** *[(Site Link)](https://sood-s-photography.vercel.app/)*
 
 ---
 
