@@ -7,7 +7,7 @@
 
 The official commercial website and digital portfolio for **Sood Photography**, designed to showcase curated visual work, present photography packages, and streamline client bookings across desktop and mobile devices.
 
-> **Live Website:** *(Add your live domain here, e.g., `[https://soodphotography.com](https://sood-s-photography.vercel.app/)`)*
+> **Live Website:** *(https://sood-s-photography.vercel.app/)*
 
 ---
 
